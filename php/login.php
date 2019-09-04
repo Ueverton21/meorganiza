@@ -1,0 +1,22 @@
+<?php 
+    require_once('../init.php');
+
+    if(isset($_POST['enviar'])){
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+
+        $sql = "SELECT * FROM usuarios WHERE email = '{$email}' && senha='{$senha}'";
+        $sql_consulta = mysqli_query($conn,$sql);
+        $sql_dados = mysqli_fetch_assoc($sql_consulta);
+
+        if(isset($sql_dados['email'])){
+            header('location: ../home/');
+        }
+        else{
+            header('location: ../?user=no');
+        }
+    }
+    else{
+        header('location: ../');
+    }
+?>

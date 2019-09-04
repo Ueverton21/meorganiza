@@ -1,0 +1,47 @@
+div#botaopesquisa{
+margin-left:72%;
+margin-top:1%;
+width: 300px;
+height:400px;
+background-color: #556B2F;
+
+}
+
+div#saldo{
+
+margin-left:26%;
+margin-top:-23%;
+width: 500px;
+height: 50px;
+background-color: #228B22;
+
+}
+
+div#resumotudo{
+
+margin-left:5%;
+margin-top:15%;
+width: 250px;
+height: 200px;
+
+
+}
+body{
+	background-color: #8FBC8F;
+}
+
+
+#botao {
+  background-color:   #2E8B57;
+  color: white;
+  padding: 11px 32px;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 10px;
+
+
+}
+#botao:hover {
+  background-color:   #3CB371;
+
+}

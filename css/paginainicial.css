@@ -1,0 +1,55 @@
+html, body{
+    height: 100%;
+}
+
+div.principal{
+    height: 100%;
+    background-image: url('../imgs/fundo.png');
+    
+    padding-top: 40px;
+}
+
+div.principal h1{
+    font-size: 60px;
+    margin-bottom: 50px;
+    font-weight: bold;
+    color: #FFF;
+    text-align: center;
+}
+
+div.conteudo{
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+div.conteudo form{
+    padding: 20px;
+    border-radius: 3px;
+    background-color: rgba(32, 178, 170,.5);
+    width: 400px;
+    flex-direction: column;
+}
+
+div.conteudo form  span{
+    color: rgb(185, 52, 52);
+    font-weight: bold;
+}
+
+div.conteudo form h2{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    color: #000;
+}
+
+div.conteudo form input{
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: 0;
+    border-radius: 3px;
+}
+
