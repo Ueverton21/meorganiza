@@ -20,8 +20,7 @@
       <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
 
       <!-- Meus estilos -->
-      <link rel="stylesheet" href="css/pagina.css">
-      <link rel="stylesheet" href="css/paginainicial.css">
+      <link rel="stylesheet" href="css/principal.css">
 
       <title>Me organiza - Login</title>
   </head>
@@ -42,7 +41,7 @@
                 <input name="email" type="email" placeholder="Digite seu email" required>
                 <input name="senha" type="password" placeholder="Digite sua senha" required minlength="8" maxlength="20">
                 <button name="enviar" class="btn btn-success mt-2 form-control" type="submit">Confirmar</button>
-                <a><button class="btn btn-dark mt-2 form-control" type="button">Nova Conta</button></a>
+                <a href="criarconta/"><button class="btn btn-dark mt-2 form-control" type="button">Nova Conta</button></a>
             </form>
         </div>
     </div>
