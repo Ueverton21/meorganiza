@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include_once('../init.php');
+  include_once('../php/init.php');
 
   if(!isset($_SESSION["usuario"])){
     header('location: ../');
@@ -79,10 +79,10 @@
     <table class="table-bordered" id="myTable">
       <tr class="header">
           <th style="width:15%;">Data de Pagamento</th>
-          <th style="width:35%;">Nome</th>
-          <th style="width:35%;">Anotação</th>
-          <th style="width:20%;">Descrição</th>
-          <th style="width:5%;">Valor</th>
+          <th style="width:25%;">Nome</th>
+          <th style="width:25%;">Anotação</th>
+          <th style="width:15%;">Descrição</th>
+          <th style="width:10%;">Valor</th>
           <th style="width:5%;">Editar</th>
           <th style="width:5%;">Excluir</th>
       </tr>
@@ -97,11 +97,11 @@
               <td><?php echo utf8_encode($linha['descricao']);?></td>
               <td><?php echo ($linha['valor']);?></td>
               <td class="text-center">
-                  <a href="#"><i style="color: #000000;" class="fa fa-pencil"></i>                                
+                  <a href="#"><i style="color: #DD0; font-size: 20px;" class="fa fa-pencil"></i>                                
                   </a>
               </td>
-              <td>
-                  <a class="fa fa-trash " href="#">
+              <td class="text-center">
+                  <a style="color: #F22; font-size: 20px;" class="fa fa-trash " href="#">
                   </a>
               </td>
           </tr>
