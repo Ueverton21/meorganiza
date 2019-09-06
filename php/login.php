@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     require_once('../init.php');
 
     if(isset($_POST['enviar'])){
@@ -10,7 +11,8 @@
         $sql_dados = mysqli_fetch_assoc($sql_consulta);
 
         if(isset($sql_dados['email'])){
-            header('location: ../home/');
+            $_SESSION["usuario"] = $sql_dados['id'];
+            header('location: ../despesas_fixas/');
         }
         else{
             header('location: ../?user=no');
