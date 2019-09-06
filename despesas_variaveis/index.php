@@ -1,6 +1,10 @@
 <?php
-
+  session_start();
   include_once('../init.php');
+
+  if(!isset($_SESSION["usuario"])){
+    header('location: ../');
+  }
 
 ?>
 <!doctype html>
@@ -24,7 +28,6 @@
     <title>Despesas Fixas</title>
 </head>
 
-
 <body>
   <div class="barra">
     <div class="ba">
@@ -36,9 +39,9 @@
     </div>
   </div>
 
-  <a href="../index.php" class="tablink" style="background-color: #B0C4DE">Despesas</a>
-  <a href="" class="tablink">Entrada</a>
-  <a href="" class="tablink">Resumo</a>
+  <a href="../despesas_fixas" class="tablink" style="background-color: #B0C4DE">Despesas</a>
+  <a href="../entrada" class="tablink">Entrada</a>
+  <a href="../resumo" class="tablink">Resumo</a>
   <a href="../despesas_fixas/" style="width:50%;Background-color:#708090;border-right:2px solid;"class="tablink vf">Despesas fixas</a>
   <a href="" style="width:50%;Background-color:#4682B4;" class="tablink vf">Despesas variáveis</a>
 
@@ -55,8 +58,8 @@
   
   <table class="table-bordered" id="myTable">
     <tr class="header">
-        <th style="width:10%;">Data</th>
-        <th style="width:40%;">Name</th>
+        <th style="width:20%;">Data de pagamento</th>
+        <th style="width:30%;">Name</th>
         <th style="width:35%;">Anotação</th>
         <th style="width:35%;">Descrição</th>
         <th style="width:5%;">Valor</th>
@@ -76,15 +79,15 @@
   </div>
 
 
-  <form action="add_despesas.php" method="POST" style="width: 90%;background-color: white;margin: 0 auto;margin-top:2%;">
+  <form action="add_despesas.php" method="POST" style="width: 100%;background-color: white;margin: 0 auto;margin-top:2%;">
     <?php
     ?>
 
     <table class="table table-bordered" id="tabeladeimplementacao" >
       <tr class="header">
-          <th style="width:10%;">Data</th>
+          <th style="width:20%;">Data de pagamento</th>
           <th style="width:20%;">Name</th>
-          <th style="width:40%;">Anotação</th>
+          <th style="width:30%;">Anotação</th>
           <th style="width:10%;">Descrição</th>
           <th style="width:12%;">Valor</th>
           <th style="width:8%;"></th>

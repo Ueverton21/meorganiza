@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if(isset($_SESSION["usuario"])){
+        header('location: despesas_fixas/');
+    }
+?>
+
 <!doctype html>
 <html lang="pt">
   <head>
@@ -20,11 +27,6 @@
   </head>
 
   <body>
-    <div class="barra pb-2">
-        <div class="ba" />
-            <label  ><i class="fa fa-bar-chart"></i> Me Organiza</label>
-        </div>
-    </div>
     <div class="principal">
         <h1><i class="fa fa-bar-chart"></i> Me Organiza</h1>
         <div class="conteudo">

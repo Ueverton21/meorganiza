@@ -1,26 +1,31 @@
 <?php
+  session_start();
+  include_once('../php/init.php');
 
-  include_once('../init.php');
-
-  const ITENS_POR_PAGINA = 5;
-  
-  $pagina = 0;
-  $corbotao = 1;
-
-  if(isset($_GET['pag'])){
-    $pagina = ($_GET['pag']);
-    $pagina = ($pagina-1)*ITENS_POR_PAGINA;
-
-    //Pegar a página para a mudar cor de botão da página selecionada
-    $corbotao = ($_GET['pag']);
+  if(!isset($_SESSION["usuario"])){
+    header('location: ../');
   }
   
-  $result = "SELECT * FROM despesas_fixas WHERE MONTH(date_despesa) = MONTH(NOW()) ORDER BY id DESC LIMIT {$pagina}, ".ITENS_POR_PAGINA;
-  $resulta_conta = mysqli_query($conn, $result); 
+    const ITENS_POR_PAGINA = 5;
+    
+    $pagina = 0;
+    $corbotao = 1;
 
-  $quantidade_sql = "SELECT COUNT(*) FROM despesas_fixas WHERE MONTH(date_despesa) = MONTH(NOW())";
-  $resultado_quantidade = mysqli_query($conn,$quantidade_sql);
-  $rows = mysqli_fetch_row($resultado_quantidade)[0];
+    if(isset($_GET['pag'])){
+      $pagina = ($_GET['pag']);
+      $pagina = ($pagina-1)*ITENS_POR_PAGINA;
+
+      //Pegar a página para a mudar cor de botão da página selecionada
+      $corbotao = ($_GET['pag']);
+    }
+    
+    $result = "SELECT * FROM despesas_fixas WHERE MONTH(date_despesa) = MONTH(NOW()) ORDER BY id DESC LIMIT {$pagina}, ".ITENS_POR_PAGINA;
+    $resulta_conta = mysqli_query($conn, $result); 
+
+    $quantidade_sql = "SELECT COUNT(*) FROM despesas_fixas WHERE MONTH(date_despesa) = MONTH(NOW())";
+    $resultado_quantidade = mysqli_query($conn,$quantidade_sql);
+    $rows = mysqli_fetch_row($resultado_quantidade)[0];
+  
 ?>
 
 
@@ -52,13 +57,13 @@
     </div>
     <div class="right">
       <a href="#" ><i class="fa fa-cog"></i></a>
-      <a href="projetoLogin.html" ><i class="fa fa-close"></i></a>
+      <a href="../php/logout.php" ><i class="fa fa-close"></i></a>
     </div>
   </div>
 
-  <a href="../" class="tablink" style="background-color: #B0C4DE">Despesas</a>
-  <a href="../entrada/" class="tablink" >Entrada</a>
-  <a href="" class="tablink">Resumo</a>
+  <a href="../despesas_fixas" class="tablink" style="background-color: #B0C4DE">Despesas</a>
+  <a href="../entrada" class="tablink" >Entrada</a>
+  <a href="../resumo" class="tablink">Resumo</a>
   <a href="" style="width:50%;Background-color:#4682B4;border-right:2px solid;"class="tablink vf">Despesas fixas</a>
   <a href="../despesas_variaveis/" style="width:50%;Background-color:#708090;" class="tablink vf">Despesas variáveis</a>
 
@@ -74,10 +79,10 @@
     <table class="table-bordered" id="myTable">
       <tr class="header">
           <th style="width:15%;">Data de Pagamento</th>
-          <th style="width:35%;">Nome</th>
-          <th style="width:35%;">Anotação</th>
-          <th style="width:20%;">Descrição</th>
-          <th style="width:5%;">Valor</th>
+          <th style="width:25%;">Nome</th>
+          <th style="width:25%;">Anotação</th>
+          <th style="width:15%;">Descrição</th>
+          <th style="width:10%;">Valor</th>
           <th style="width:5%;">Editar</th>
           <th style="width:5%;">Excluir</th>
       </tr>
@@ -91,12 +96,12 @@
               <td><?php echo utf8_encode($linha['anotacao']);?></td>
               <td><?php echo utf8_encode($linha['descricao']);?></td>
               <td><?php echo ($linha['valor']);?></td>
-              <td>
-                  <a class="fa fa-pencil" href="#">                                   
+              <td class="text-center">
+                  <a href="#"><i style="color: #DD0; font-size: 20px;" class="fa fa-pencil"></i>                                
                   </a>
               </td>
-              <td>
-                  <a class="fa fa-trash " href="#">
+              <td class="text-center">
+                  <a style="color: #F22; font-size: 20px;" class="fa fa-trash " href="#">
                   </a>
               </td>
           </tr>
@@ -126,8 +131,8 @@
         ?>
   </div>
 
-  <form action="../add_despesas.php" method="POST" style="width: 90%;background-color: white;margin: 0 auto;margin-top:2%;">
-    <table class="table table-bordered" id="tabeladeimplementacao" >
+  <form action="../php/add_despesas_fixas.php" method="POST" style="width: 90%;background-color: white;margin: 0 auto;margin-top:2%;">
+    <table class="table table-bordered" id="tabeladeimplementacao">
       <tr class="header">
           <th style="width:10%;">Data</th>
           <th style="width:20%;">Nome</th>
