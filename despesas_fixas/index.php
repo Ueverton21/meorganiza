@@ -1,6 +1,8 @@
 <?php
-  session_start();
   include_once('../php/init.php');
+  include_once('../php/datas.php');
+
+  session_start();
 
   if(!isset($_SESSION["usuario"])){
     header('location: ../');
@@ -91,7 +93,7 @@
           while($linha = mysqli_fetch_assoc($resulta_conta)){           
       ?>
           <tr>
-              <th scope="row"><?php echo ($linha['date_despesa']);?></th>
+              <th scope="row"><?php echo retornaDataFormatoBr($linha['date_despesa']);?></th>
               <td><?php echo utf8_encode($linha['nome']);?></td>
               <td><?php echo utf8_encode($linha['anotacao']);?></td>
               <td><?php echo utf8_encode($linha['descricao']);?></td>
