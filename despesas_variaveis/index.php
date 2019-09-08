@@ -62,33 +62,35 @@
     </div>
   </div>
 
-  <a href="../despesas_fixas" class="tablink" style="background-color: #B0C4DE">Despesas</a>
+  <a href="../despesas_fixas" class="tablink" style="background-color: #8FCCAA">Despesas</a>
   <a href="../entrada" class="tablink">Entrada</a>
   <a href="../resumo" class="tablink">Resumo</a>
-  <a href="../despesas_fixas/" style="width:50%;Background-color:#708090;border-right:2px solid;"class="tablink vf">Despesas fixas</a>
-  <a href="" style="width:50%;Background-color:#4682B4;" class="tablink vf">Despesas variáveis</a>
+
+  <a href="../despesas_fixas/" style="width:50%;Background-color:#999; Background-color:#333; border-bottom-right-radius: 20px;"class="tablink vf">Despesas Fixas</a>
+  <a href="" style="width:50%;color: #000; background-color: #BBB; font-weight: bold;" class="tablink vf">Despesas Variáveis</a>
 
 
   <div id="Despesas" class="tabcontent">
-    <h1 style="text-align: center; margin-top: 10%;margin-bottom: 2%;">Despesas Variáveis</h1>
-      <form>
-        <input class="fa fa-search" type="text" id="myInput" placeholder="Pesquise aqui..."> 
-    <select style="width: 10%; border-radius: 5px;height: 30px; margin-left:20px;">
-        <option  >Data</option>
-        <option   selected>Nome</option>
-    </select>
-  </form>
+    <form >
+      <input class="fa fa-search" type="text" id="myInput" placeholder="Pesquise aqui..."> 
+      <select style="width: 10%; border-radius: 5px;height: 30px; margin-left:20px;">
+          <option  >Data</option>
+          <option   selected>Nome</option>
+      </select>
+    </form>
   
-  <table class="table-bordered" id="myTable">
-    <tr class="header">
-        <th style="width:15%;">Data de pagamento</th>
-        <th style="width:25%;">Name</th>
-        <th style="width:25%;">Anotação</th>
-        <th style="width:15%;">Descrição</th>
-        <th style="width:10%;">Valor</th>
-        <th style="width:5%;">Editar</th>
-        <th style="width:5%;">Excluir</th>
-    </tr>
+  <table class="table table-bordered table-light table-hover">
+    <thead class="thead-dark">
+      <tr class="header">
+          <th style="width:15%;">Data de pagamento</th>
+          <th style="width:25%;">Name</th>
+          <th style="width:25%;">Anotação</th>
+          <th style="width:15%;">Descrição</th>
+          <th style="width:10%;">Valor</th>
+          <th style="width:5%;">Editar</th>
+          <th style="width:5%;">Excluir</th>
+      </tr>
+    </thead>
     <tbody>          
     <?php 
           while($linha = mysqli_fetch_assoc($resulta_conta)){           
@@ -137,16 +139,17 @@
     <?php
     ?>
 
-    <table class="table table-bordered" id="tabeladeimplementacao" >
-      <tr class="header">
+    <table class="table table-dark table-bordered" id="tabeladeimplementacao" >
+      <thead class="thead-dark">
+        <tr class="header">
           <th style="width:20%;">Data de pagamento</th>
           <th style="width:20%;">Name</th>
           <th style="width:30%;">Anotação</th>
           <th style="width:10%;">Descrição</th>
           <th style="width:12%;">Valor</th>
           <th style="width:8%;"></th>
-
-      </tr>
+        </tr>
+      </thead>
 
       <tr>
           <td><input name="data" id="data" style="width:100%; margin-top: 3px;border: 3px;"></input></td>
@@ -159,7 +162,7 @@
                 <option value="Outro">Outro</option>
               </select></td>
           <td><input name="valor" id="valor" style="width:100%; margin-top: 3px;border: 3px;"></input></td>
-          <td><button nome="add-despesa" id="adi" class="btn btn-success" type="submit" >Confirma</button></td>
+          <td><button nome="add-despesa" id="adi" class="btn btn-success" type="submit" >Confirmar</button></td>
       </tr>
     </table>
 

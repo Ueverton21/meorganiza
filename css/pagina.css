@@ -2,6 +2,11 @@ body, html {
   height: 100% 0 auto;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  color: '#FFF';
+}
+
+body{
+  background-color: #BBB;
 }
 
 /* Style tab links */
@@ -35,7 +40,7 @@ body, html {
 /* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
   width: 90%;
-  margin: 0 auto 20px auto;
+  margin: 150px auto 20px auto;
   height: 100% 0 auto;
 }
 .tabcontent h1{
@@ -49,7 +54,7 @@ div#Entrada{
 
 /* configuração dos botões que fica na barra superior, deve ter alguns codigos que nem serve pelo projeto anterior */
 .barra {
-  background-color: rgb(32, 178, 170) ;
+  background-color: #20b2aa ;
   overflow: hidden;
 }
 
@@ -118,44 +123,6 @@ div#Entrada{
   margin-bottom: 12px; 
 }
 
-#myTable {
-  width: 100%; /* Full-width */
-  border: 1px solid #ddd; /* Add a grey border */
-  font-size: 15px; /* Increase font-size */
-}
-
-#myTable th, #myTable td {
-  text-align: left; /* Left-align text */
-  padding: 12px; /* Add padding */
-}
-
-#myTable tr {
-
-  border-bottom: 1px solid #ddd; 
-}
-
-#myTable tr.header {
-
-  background-color: #008B8B;
-}
-#myTable tr:hover {
-
-  background-color: #48D1CC;
-}
-
-#tabeladeimplementacao tr.header {
-
-  background-color: #008B8B;
-}
-#tabeladeimplementacao tr td {
-
-  background-color: #48D1CC;
-}
-
-
-
-
-
 .alert {
   padding: 20px;
   background-color: #f44336; /* Red */
@@ -198,4 +165,12 @@ a.btn-paginacao button{
   color: #FFF;
   padding: 5px 10px;
   font-weight: bold;
+}
+
+/*MENU DESPESAS ESTILOS*/
+span.tab-menu{
+  color: #000;
+  padding: 10px;
+  background-color: #FFF;
+  border-radius: 5px;
 }

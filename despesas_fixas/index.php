@@ -63,14 +63,13 @@
     </div>
   </div>
 
-  <a href="../despesas_fixas" class="tablink" style="background-color: #B0C4DE">Despesas</a>
+  <a href="../despesas_fixas" class="tablink" style="background-color: #57aa7d">Despesas</a>
   <a href="../entrada" class="tablink" >Entrada</a>
   <a href="../resumo" class="tablink">Resumo</a>
-  <a href="" style="width:50%;Background-color:#4682B4;border-right:2px solid;"class="tablink vf">Despesas fixas</a>
-  <a href="../despesas_variaveis/" style="width:50%;Background-color:#708090;" class="tablink vf">Despesas variáveis</a>
+  <a href="" style="width:50%;color: #000; background-color: #BBB; font-weight: bold;" class="tablink vf">Despesas Fixas</a>
+  <a href="../despesas_variaveis/" style="width:50%;Background-color:#333; border-bottom-left-radius: 20px;" class="tablink vf">Despesas Variáveis</a>
 
   <div id="Despesas" class="tabcontent">
-    <h1 style="text-align: center; margin-top: 10%;margin-bottom: 2%;">Despesas Fixas</h1>
     <form>
       <input class="fa fa-search" id="myInput" placeholder="Pesquise aqui..."> 
       <select style="width: 10%; border-radius: 5px;height: 30px; margin-left:20px;">
@@ -78,16 +77,18 @@
         <option   selected>Nome</option>
       </select>
     </form>
-    <table class="table-bordered" id="myTable">
-      <tr class="header">
-          <th style="width:15%;">Data de Pagamento</th>
-          <th style="width:25%;">Nome</th>
-          <th style="width:25%;">Anotação</th>
-          <th style="width:15%;">Descrição</th>
-          <th style="width:10%;">Valor</th>
-          <th style="width:5%;">Editar</th>
-          <th style="width:5%;">Excluir</th>
-      </tr>
+    <table class="table table-bordered table-light table-hover">
+      <thead class="thead-dark">
+        <tr class="header">
+            <th style="width:15%;">Data de Pagamento</th>
+            <th style="width:25%;">Nome</th>
+            <th style="width:25%;">Anotação</th>
+            <th style="width:15%;">Descrição</th>
+            <th style="width:10%;">Valor</th>
+            <th style="width:5%;">Editar</th>
+            <th style="width:5%;">Excluir</th>
+        </tr>
+      </thead>
         <tbody>
       <?php 
           while($linha = mysqli_fetch_assoc($resulta_conta)){           
@@ -134,15 +135,17 @@
   </div>
 
   <form action="../php/add_despesas_fixas.php" method="POST" style="width: 90%;background-color: white;margin: 0 auto;margin-top:2%;">
-    <table class="table table-bordered" id="tabeladeimplementacao">
-      <tr class="header">
-          <th style="width:10%;">Data</th>
-          <th style="width:20%;">Nome</th>
-          <th style="width:45%;">Anotação</th>
-          <th style="width:10%;">Descrição</th>
-          <th style="width:10%;">Valor</th>
-          <th style="width:5%;"></th>
-      </tr>
+  <table class="table table-dark table-bordered" id="tabeladeimplementacao" >
+      <thead class="thead-dark">
+        <tr class="header">
+            <th style="width:10%;">Data</th>
+            <th style="width:20%;">Nome</th>
+            <th style="width:45%;">Anotação</th>
+            <th style="width:10%;">Descrição</th>
+            <th style="width:10%;">Valor</th>
+            <th style="width:5%;"></th>
+        </tr>
+      </thead>
 
       <tr>
           <td><input name="data" id="data" style="width:100%; margin-top: 3px;border: 3px;"></input></td>

@@ -30,9 +30,8 @@
 
 </div>
   <div class="right">
-   <a href="#" ><i class="fa fa-cog"></i></a>
- 
-       <a href="../php/logout.php" ><i class="fa fa-close"></i></a>
+    <a href="#" ><i class="fa fa-cog"></i></a>
+    <a href="../php/logout.php" ><i class="fa fa-close"></i></a>
   </div>
 </div>
 <a href="../despesas_fixas" class="tablink"  >Despesas</a>
