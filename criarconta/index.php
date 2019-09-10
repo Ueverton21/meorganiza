@@ -50,9 +50,9 @@
                 <input name="email" type="email" placeholder="Digite seu email" required>
                 <input name="senha" type="password" placeholder="Digite sua senha" required minlength="8" maxlength="20">
                 <button name="enviar" class="btn btn-success mt-2 form-control font-weight-bold" type="submit">Criar Conta</button>
+                <a href="../"><button type="button" class="btn btn-dark mt-2 form-control font-weight-bold">Voltar</button></a>
             </form>
         </div>
     </div>
-    
   </body>
 </html>

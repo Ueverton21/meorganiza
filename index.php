@@ -40,11 +40,10 @@
                 ?>
                 <input name="email" type="email" placeholder="Digite seu email" required>
                 <input name="senha" type="password" placeholder="Digite sua senha" required minlength="8" maxlength="20">
-                <button name="enviar" class="btn btn-success mt-2 form-control" type="submit">Confirmar</button>
-                <a href="criarconta/"><button class="btn btn-dark mt-2 form-control" type="button">Nova Conta</button></a>
+                <button name="enviar" class="btn btn-success mt-2 form-control font-weight-bold" type="submit">Confirmar</button>
+                <a href="criarconta/"><button class="btn btn-dark mt-2 form-control font-weight-bold" type="button">Nova Conta</button></a>
             </form>
         </div>
     </div>
-    
   </body>
 </html>

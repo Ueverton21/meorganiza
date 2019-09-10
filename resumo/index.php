@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="../css/pagina.css">
     <link rel="stylesheet" href="../css/resumo.css">
 
-    <title>Nada ainda</title>
+    <title>Resumo</title>
 </head>
 
 
@@ -35,9 +35,8 @@
   </div>
 </div>
 <a href="../despesas_fixas" class="tablink"  >Despesas</a>
+<a href="" class="tablink" style="background-color:   #20B2AA" >Resumo</a>
 <a href="../entrada" class="tablink" >Entrada</a>
-<a href="" class="tablink" style="background-color:   #8FBC8F" >Resumo</a>
-
 
 <div id="resumotudo">
     <a href="" id="botao" class="btn">Despesas fixas</a>
@@ -45,8 +44,6 @@
   <a href="" id="botao" class="btn">Entrada</a>
   
 </div>
-
-
 <div id="botaopesquisa">
 
 </div>

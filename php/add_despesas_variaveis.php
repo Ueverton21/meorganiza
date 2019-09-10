@@ -1,6 +1,6 @@
 <?php
 	include_once("init.php");
-
+	include_once("datas.php");
 	session_start();
 	$user = NULL;
 
@@ -8,7 +8,7 @@
 		$user = $_SESSION['usuario'];
 	}
 
-	$data = isset ($_POST ['data']) ? $_POST['data'] : null;
+	$data = isset ($_POST ['data']) ? retornaDataFormatoBanco($_POST['data']) : null;
 	$nome = isset($_POST['nome']) ? utf8_decode($_POST ['nome']) : null;
 	$descricao = isset($_POST['descricao']) ? utf8_decode($_POST ['descricao']) : null;
 	$anotacao = isset($_POST['anotacao']) ? utf8_decode($_POST ['anotacao']) : null;
