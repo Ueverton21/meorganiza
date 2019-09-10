@@ -12,7 +12,7 @@
 
         if(isset($sql_dados['email'])){
             $_SESSION["usuario"] = $sql_dados['id'];
-            header('location: ../despesas_fixas/');
+            header('location: ../resumo/');
         }
         else{
             header('location: ../?user=no');

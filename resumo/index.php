@@ -14,13 +14,12 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <!-- Meus estilos -->
     <link rel="stylesheet" href="../css/pagina.css">
     <link rel="stylesheet" href="../css/resumo.css">
 
-    <title>Nada ainda</title>
+    <title>Resumo</title>
 </head>
 
 
@@ -31,37 +30,19 @@
 
 </div>
   <div class="right">
-   <a href="#" ><i class="fa fa-cog"></i></a>
- 
-       <a href="projetoLogin.html" ><i class="fa fa-close"></i></a>
+    <a href="#" ><i class="fa fa-cog"></i></a>
+    <a href="../php/logout.php" ><i class="fa fa-close"></i></a>
   </div>
 </div>
 <a href="../despesas_fixas" class="tablink"  >Despesas</a>
+<a href="" class="tablink" style="background-color:   #20B2AA" >Resumo</a>
 <a href="../entrada" class="tablink" >Entrada</a>
-<a href="" class="tablink" style="background-color:   #8FBC8F" >Resumo</a>
-
 
 <div id="resumotudo">
     <a href="" id="botao" class="btn">Despesas fixas</a>
-  <a href="" id="botao" class="btn">Despesas variadas</a>
-  <a href="" id="botao" class="btn">Entrada</a>
-  
+    <a href="" id="botao" class="btn">Despesas variadas</a>
+    <a href="" id="botao" class="btn">Entrada</a>
 </div>
-
-
-<div id="saldo">
-  <p> Saldo total: 0,00
-</div>
-
-<div id="botaopesquisa">
-
-</div>
-
-
-
-
-
-
 
 </body>
 </html>

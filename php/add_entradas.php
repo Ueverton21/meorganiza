@@ -10,17 +10,17 @@
 	}
 
 	$data = isset ($_POST ['data']) ? retornaDataFormatoBanco($_POST['data']) : null;
-	$nome = isset($_POST['nome']) ? utf8_decode($_POST ['nome']) : null;
 	$descricao = isset($_POST['descricao']) ? utf8_decode($_POST ['descricao']) : null;
-	$anotacao = isset($_POST['anotacao']) ? utf8_decode($_POST ['anotacao']) : null;
+	$tipo = isset($_POST['tipo-entrada']) ? utf8_decode($_POST ['tipo-entrada']) : null;
 	$valor = isset($_POST['valor']) ? $_POST ['valor'] : null;
 
-	$resultado = "INSERT INTO despesas_fixas(date_despesa, nome, anotacao, descricao, valor, id_usuario) VALUES ('$data','$nome','$anotacao','$descricao','$valor','$user')";
+
+	$resultado = "INSERT INTO entradas(data_entrada, descricao, tipo, valor, id_usuario) VALUES ('$data','$descricao','$tipo','$valor','$user')";
 	
 	if(mysqli_query($conn, $resultado)){
-		header('location: ../despesas_fixas/');
+		header('location: ../entrada/');
 	}else{
 		echo "<script> alert('Ocorreu um erro');</script>";
-		header('location: ../despesas_fixas/');
+		header('location: ../entrada/');
 	}
 ?>
