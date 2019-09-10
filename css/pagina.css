@@ -48,7 +48,8 @@ body{
 }
 
 div#Entrada{
-  margin-top:25%;
+  margin: 80px auto 0 auto;
+  width: 90%;
 }
 
 
@@ -165,12 +166,4 @@ a.btn-paginacao button{
   color: #FFF;
   padding: 5px 10px;
   font-weight: bold;
-}
-
-/*MENU DESPESAS ESTILOS*/
-span.tab-menu{
-  color: #000;
-  padding: 10px;
-  background-color: #FFF;
-  border-radius: 5px;
 }

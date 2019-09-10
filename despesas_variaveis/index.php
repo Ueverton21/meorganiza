@@ -114,7 +114,7 @@ $rows = mysqli_fetch_row($resultado_quantidade)[0];
     </thead>
     <tbody>
     <?php
-while ($linha = mysqli_fetch_assoc($resulta_conta)) {
+      while ($linha = mysqli_fetch_assoc($resulta_conta)) {
     ?>
           <tr>
               <th scope="row"><?php echo retornaDataFormatoBr($linha['date_despesa']); ?></th>
@@ -147,12 +147,12 @@ while ($linha = mysqli_fetch_assoc($resulta_conta)) {
 
         for ($i = 1; $i <= $botoes; $i++) {
       ?>
-              <a class="btn-paginacao" href="../despesas_fixas/?pag=<?php echo "{$i}"; ?>">
+              <a class="btn-paginacao" href="../despesas_variaveis/?pag=<?php echo "{$i}"; ?>">
                 <button style="<?php if ($corbotao == $i) {echo "background-color: #4682B4";}?>"><?php echo "{$i}"; ?></button>
               </a>
         <?php
-  }
-  ?>
+        }
+        ?>
   </div>
 
   <form action="../php/add_despesas_variaveis.php" method="POST" style="width: 100%;background-color: white;margin: 0 auto;margin-top:2%;">

@@ -1,5 +1,36 @@
+<?php
+  include_once '../php/init.php';
+  include_once '../php/datas.php';
 
-<!doctype html>
+  session_start();
+
+  if (!isset($_SESSION["usuario"])) {
+      header('location: ../');
+  }
+
+  const ITENS_POR_PAGINA = 5;
+
+  $pagina = 0;
+  $corbotao = 1;
+
+  if (isset($_GET['pag'])) {
+    $pagina = ($_GET['pag']);
+    $pagina = ($pagina - 1) * ITENS_POR_PAGINA;
+
+    //Pegar a página para a mudar cor de botão da página selecionada
+    $corbotao = ($_GET['pag']);
+  }
+  $id_usuario = $_SESSION['usuario'];
+  $result = "SELECT * FROM entradas WHERE id_usuario='$id_usuario' AND MONTH(data_entrada) = MONTH(NOW()) ORDER BY id DESC LIMIT {$pagina}, " . ITENS_POR_PAGINA;
+  $resulta_conta = mysqli_query($conn, $result);
+
+  $quantidade_sql = "SELECT COUNT(*) FROM entradas WHERE id_usuario='$id_usuario' AND MONTH(data_entrada) = MONTH(NOW())";
+  $resultado_quantidade = mysqli_query($conn, $quantidade_sql);
+  $rows = mysqli_fetch_row($resultado_quantidade)[0];
+
+?>
+
+<!Doctype html>
 <html lang="pt">
   <head>
       <!-- Required meta tags -->
@@ -35,13 +66,75 @@
     <a href="" class="tablink" style="background-color: #8FBC8F" >Entrada</a>
 
     <div id="Entrada">
-      <form  style="width: 90%;background-color: white;margin: 0 auto;">
+    <table class="table table-bordered table-light table-hover">
+    <thead class="thead-dark">
+      <tr class="header">
+          <th style="width:15%;">Data da Entrada</th>
+          <th style="width:35%;">Descrição</th>
+          <th style="width:20%;">Tipo de entrada</th>
+          <th style="width:10%;">Valor</th>
+          <th style="width:10%;">Editar</th>
+          <th style="width:10%;">Excluir</th>
+      </tr>
+      <!--Caso não tenha nenhuma despesa -->
+      <?php 
+          if($rows==0){
+        ?>
+            <tr>
+              <th colspan="7" style="color: #F55">Nenhuma entrada no mês atual.</th>
+            </tr>
+
+        <?php 
+          }
+        ?>
+    </thead>
+    <tbody>
+    <?php
+      while ($linha = mysqli_fetch_assoc($resulta_conta)) {
+    ?>
+          <tr>
+              <th scope="row"><?php echo retornaDataFormatoBr($linha['data_entrada']); ?></th>
+              <td><?php echo utf8_encode($linha['descricao']); ?></td>
+              <td><?php echo utf8_encode($linha['tipo']); ?></td>
+              <td><?php echo utf8_encode($linha['valor']); ?></td>
+              <td class="text-center">
+                  <a href="#"><i style="color: #DD0; font-size: 20px;" class="fa fa-pencil"></i>
+                  </a>
+              </td>
+              <td class="text-center">
+                  <a style="color: #F22; font-size: 20px;" class="fa fa-trash " href="#">
+                  </a>
+              </td>
+          </tr>
+      <?php
+      }
+      ?>
+    </tbody>
+  </table>
+  <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px;">
+      <?php
+        if ($rows % ITENS_POR_PAGINA != 0) {
+            $botoes = (int) ($rows / ITENS_POR_PAGINA) + 1;
+        } else {
+            $botoes = (int) ($rows / ITENS_POR_PAGINA);
+        }
+
+        for ($i = 1; $i <= $botoes; $i++) {
+      ?>
+              <a class="btn-paginacao" href="../entrada/?pag=<?php echo "{$i}"; ?>">
+                <button style="<?php if ($corbotao == $i) {echo "background-color: #4682B4";}?>"><?php echo "{$i}"; ?></button>
+              </a>
+        <?php
+        }
+        ?>
+  </div>
+      <form action="../php/add_entradas.php" method="POST" style="width: 100%;background-color: white;margin: 50px auto 0 auto;">
         <table class="table table-bordered table-dark" >
           <thead class="thead-dark">
             <tr class="header">
-              <th style="width:10%;">Data</th>
+              <th style="width:15%;">Data da Entrada</th>
               <th style="width:50%;">Descrição</th>
-              <th style="width:20%;">Tipo de entrada</th>
+              <th style="width:10%;">Tipo de entrada</th>
               <th style="width:10%;">Valor</th>
               <th style="width:10%;"></th>
             </tr>
@@ -55,7 +148,8 @@
                   <option value="Cartão de Crédito">Cartão de Crédito</option>
               		<option value="Espécie">Espécie</option>
               		<option value="Boleto">Boleto</option>
-              		<option value="Promissória">Promissória</option>
+                  <option value="Promissória">Promissória</option>
+                  <option value="Transferência">Transferência</option>
                 </select>
               </td>
             

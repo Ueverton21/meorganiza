@@ -40,12 +40,8 @@
 
 <div id="resumotudo">
     <a href="" id="botao" class="btn">Despesas fixas</a>
-  <a href="" id="botao" class="btn">Despesas variadas</a>
-  <a href="" id="botao" class="btn">Entrada</a>
-  
-</div>
-<div id="botaopesquisa">
-
+    <a href="" id="botao" class="btn">Despesas variadas</a>
+    <a href="" id="botao" class="btn">Entrada</a>
 </div>
 
 </body>
