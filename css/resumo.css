@@ -1,47 +1,71 @@
-div#botaopesquisa{
-margin-left:72%;
-margin-top:1%;
-width: 300px;
-height:400px;
-background-color: #556B2F;
-
+div.saldo{
+    color: #000;
+    width: 70%;
+    margin: 80px auto 0 auto;
+    padding: 10px 0;
+    border-radius: 2px;
+    box-shadow: 0 0 5px #333;
 }
 
-div#saldo{
-
-margin-left:26%;
-margin-top:-23%;
-width: 500px;
-height: 50px;
-background-color: #228B22;
-
+div.saldo div.filtro form{
+    background-color: #555;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px #333;
 }
 
-div#resumotudo{
-
-margin-left:5%;
-margin-top:15%;
-width: 250px;
-height: 200px;
-
-
-}
-body{
-	background-color: #DDD;
+div.saldo h4{
+    border-radius: 5px;
+    color: #111;
+    letter-spacing: 1px;
+    font-size: 25px;
+    font-weight: bold;
 }
 
-
-#botao {
-  background-color:   #2E8B57;
-  color: white;
-  padding: 11px 32px;
-  text-align: center;
-  font-size: 15px;
-  margin-top: 10px;
-
-
+div.saldo h5{
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 35px;
 }
-#botao:hover {
-  background-color:   #3CB371;
 
+h5.positivo{
+    color: rgb(2, 128, 247);
+}
+
+h5.negativo{
+    color: rgb(143, 23, 7);
+}
+
+div.quadro-left{
+    font-family: monospace;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px #333;
+}
+
+div.quadro-right div.quadro{
+    font-family: monospace;
+    padding: 10px 20px;
+    border-radius: 4px;
+    background-color: #444;
+    box-shadow: 0 0 10px #333;
+}
+
+div.quadro-right div.quadro h4{
+    letter-spacing: 1px;
+    color: #FFF;
+}
+
+div.quadro-right div.quadro h5{
+    font-weight: bold;
+    color: #000;
+}
+
+div.quadro-right div.quadro h5 span.gasto{
+    color: rgb(202, 42, 21);
+}
+
+div.quadro-right div.quadro h5 span.ganho{
+    color: rgb(2, 128, 247);
 }
