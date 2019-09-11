@@ -38,6 +38,13 @@
   $entradas = mysqli_fetch_array(mysqli_query($conn, "SELECT SUM(valor) FROM entradas WHERE id_usuario = '$user' AND MONTH(data_entrada) = MONTH('0000-$mes-00')"))[0];
   $saldo_futuro = $entradas-$total_despesas;
 
+  //Saldo Anual - Pega as informções do ano inteiro
+  $despesas_fixas_ano = mysqli_fetch_array(mysqli_query($conn, "SELECT SUM(valor) FROM despesas_fixas WHERE id_usuario = '$user' AND YEAR(date_despesa) = YEAR(now())"))[0];
+  $despesas_variaveis_ano = mysqli_fetch_array(mysqli_query($conn, "SELECT SUM(valor) FROM despesas_variaveis WHERE id_usuario = '$user' AND YEAR(date_despesa) = YEAR(now())"))[0];
+  $total_despesas_ano =  $despesas_fixas_ano+$despesas_variaveis_ano;
+  $entradas_ano = mysqli_fetch_array(mysqli_query($conn, "SELECT SUM(valor) FROM entradas WHERE id_usuario = '$user' AND YEAR(data_entrada) = YEAR(now())"))[0];
+  $saldo_ano = $entradas_ano-$total_despesas_ano;
+
 ?>
 
 <!doctype html>
@@ -163,7 +170,7 @@
       </div>
       <div class="row quadro-right col-4">
         <div class="quadro col-12">
-          <h4 class="text-center">Total do mês atual</h4>
+          <h4 class="text-center">Total do mês</h4>
           <h5 class="mt-3">Despesas fixas: 
             <span class="gasto"><?php echo number_format($despesas_fixas, 2, ',','');?></span>
           </h5>
@@ -176,10 +183,28 @@
         </div>
         <div class="quadro col-12 mt-3">
           <h4 class="text-center">Total do ano</h4>
-          <h5 class="mt-3">Despesas fixas:  </h5>
-          <h5>Despesas variáveis:  </h5>
-          <h5>Entradas:  </h5>
-          <h5>Saldo do ano:  </h5>
+          <h5 class="mt-3">Despesas fixas:  
+            <span class="gasto"><?php echo number_format($despesas_fixas_ano, 2, ',','');?></span>
+          </h5>
+          <h5>Despesas variáveis:  
+            <span class="gasto"><?php echo number_format($despesas_variaveis_ano, 2, ',','');?></span>
+          </h5>
+          <h5>Entradas:  
+            <span class="ganho"><?php echo number_format($entradas_ano, 2, ',','');?></span>
+          </h5>
+          <h5>Saldo do ano:  
+            <?php
+              if($saldo_ano>=0){ 
+            ?>
+                <span class="ganho"><?php echo number_format($saldo_ano, 2, ',','');?></span>
+            <?php
+              }else{ 
+            ?>
+                <span class="gasto"><?php echo number_format($saldo_ano, 2, ',','');?></span>
+            <?php
+              } 
+            ?>
+          </h5>
         </div>
       </div>
     </div>
