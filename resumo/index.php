@@ -2,6 +2,10 @@
   include_once('../php/init.php');
   session_start();
 
+  //TIMEZONE BRASIL
+  date_default_timezone_set('Etc/GMT+3');
+  setlocale(LC_TIME, "ptb");
+
   if(!isset($_SESSION['usuario'])){
     header('location: ../');
   }
@@ -16,10 +20,6 @@
     $mes = $_POST['mes'];
   }
   else{
-    //TIMEZONE BRASIL
-    date_default_timezone_set('Etc/GMT+3');
-    setlocale(LC_TIME, "ptb");
-    //Pegar o mês atual
     $mes = strftime('%m');
 
     //saldo atual - Pega as informações do início do mês até o dia corrente
