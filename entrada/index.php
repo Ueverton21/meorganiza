@@ -58,7 +58,7 @@
       </div>
       <div class="right">
         <a href="#" ><i class="fa fa-cog"></i></a>
-        <a href="projetoLogin.html" ><i class="fa fa-close"></i></a>
+        <a href="../php/logout.php" ><i class="fa fa-close"></i></a>
       </div>
     </div>
     <a href="../despesas_fixas" class="tablink" >Despesas</a>
@@ -96,7 +96,7 @@
               <th scope="row"><?php echo retornaDataFormatoBr($linha['data_entrada']); ?></th>
               <td><?php echo utf8_encode($linha['descricao']); ?></td>
               <td><?php echo utf8_encode($linha['tipo']); ?></td>
-              <td><?php echo utf8_encode($linha['valor']); ?></td>
+              <td><?php echo number_format($linha['valor'], 2, ',',''); ?></td>
               <td class="text-center">
                   <a href="#"><i style="color: #DD0; font-size: 20px;" class="fa fa-pencil"></i>
                   </a>

@@ -119,7 +119,7 @@
               <td><?php echo utf8_encode($linha['nome']);?></td>
               <td><?php echo utf8_encode($linha['anotacao']);?></td>
               <td><?php echo utf8_encode($linha['descricao']);?></td>
-              <td><?php echo ($linha['valor']);?></td>
+              <td><?php echo number_format($linha['valor'], 2, ',','');?></td>
               <td class="text-center">
                   <a href="#"><i style="color: #DD0; font-size: 20px;" class="fa fa-pencil"></i>                                
                   </a>
