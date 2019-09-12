@@ -23,10 +23,10 @@
     $mes = strftime('%m');
 
     //saldo atual - Pega as informações do início do mês até o dia corrente
-    $despesas_fixas_atuais = mysqli_fetch_array(mysqli_query($conn, "SELECT SUM(valor) FROM despesas_fixas WHERE id_usuario = '$user' AND MONTH(date_despesa) = MONTH('0000-$mes-00') AND DAY(date_despesa) < DAY(now())"))[0];
-    $despesas_variaveis_atuais = mysqli_fetch_array(mysqli_query($conn, "SELECT SUM(valor) FROM despesas_variaveis WHERE id_usuario = '$user' AND MONTH(date_despesa) = MONTH('0000-$mes-00') AND DAY(date_despesa) < DAY(now())"))[0];
+    $despesas_fixas_atuais = mysqli_fetch_array(mysqli_query($conn, "SELECT SUM(valor) FROM despesas_fixas WHERE id_usuario = '$user' AND MONTH(date_despesa) = MONTH('0000-$mes-00') AND DAY(date_despesa) <= DAY(now())"))[0];
+    $despesas_variaveis_atuais = mysqli_fetch_array(mysqli_query($conn, "SELECT SUM(valor) FROM despesas_variaveis WHERE id_usuario = '$user' AND MONTH(date_despesa) = MONTH('0000-$mes-00') AND DAY(date_despesa) <= DAY(now())"))[0];
     $total_despesas_atuais =  $despesas_fixas_atuais+$despesas_variaveis_atuais;
-    $entradas_atuais = mysqli_fetch_array(mysqli_query($conn, "SELECT SUM(valor) FROM entradas WHERE id_usuario = '$user' AND MONTH(data_entrada) = MONTH('0000-$mes-00') AND DAY(data_entrada) < DAY(now())"))[0];
+    $entradas_atuais = mysqli_fetch_array(mysqli_query($conn, "SELECT SUM(valor) FROM entradas WHERE id_usuario = '$user' AND MONTH(data_entrada) = MONTH('0000-$mes-00') AND DAY(data_entrada) <= DAY(now())"))[0];
     $saldo_atual = $entradas_atuais - $total_despesas_atuais;
   }
 
@@ -162,35 +162,35 @@
       </div>
     </div>
     <div class="row justify-content-around mt-4">
-      <div class="quadro-left col-4">
-        <h4>Mes Atual</h4> 
-      </div>
-      <div class="col-4">
-
-      </div>
-      <div class="row quadro-right col-4">
-        <div class="quadro col-12">
+      <div class="row col-12 mt-2">
+        <div class="quadro col-4">
           <h4 class="text-center">Total do mês</h4>
           <h5 class="mt-3">Despesas fixas: 
-            <span class="gasto"><?php echo number_format($despesas_fixas, 2, ',','');?></span>
+            <span class="gasto"><?php echo number_format($despesas_fixas, 2, ',','');?></span><hr>
           </h5>
           <h5>Despesas variáveis: 
-            <span class="gasto"><?php echo number_format($despesas_variaveis, 2, ',','');?></span>
+            <span class="gasto"><?php echo number_format($despesas_variaveis, 2, ',','');?></span><hr>
           </h5>
           <h5>Entradas: 
             <span class="ganho"><?php echo number_format($entradas, 2, ',','');?></span>
           </h5>
         </div>
-        <div class="quadro col-12 mt-3">
+        <div class="paragrafo col-4">
+          <p>Saldo atual é o cálculo do ínicio do mês atual até o dia corrente, ou seja, até hoje. Já o saldo
+            futuro corresponde ao mês inteiro, ou seja, entradas e despesas do mês inteiro mesmo que o dia ainda
+            não tenha chegado.
+          </p>
+        </div>
+        <div class="quadro col-4">
           <h4 class="text-center">Total do ano</h4>
           <h5 class="mt-3">Despesas fixas:  
-            <span class="gasto"><?php echo number_format($despesas_fixas_ano, 2, ',','');?></span>
+            <span class="gasto"><?php echo number_format($despesas_fixas_ano, 2, ',','');?></span><hr>
           </h5>
           <h5>Despesas variáveis:  
-            <span class="gasto"><?php echo number_format($despesas_variaveis_ano, 2, ',','');?></span>
+            <span class="gasto"><?php echo number_format($despesas_variaveis_ano, 2, ',','');?></span><hr>
           </h5>
           <h5>Entradas:  
-            <span class="ganho"><?php echo number_format($entradas_ano, 2, ',','');?></span>
+            <span class="ganho"><?php echo number_format($entradas_ano, 2, ',','');?></span><hr>
           </h5>
           <h5>Saldo do ano:  
             <?php
@@ -207,6 +207,9 @@
           </h5>
         </div>
       </div>
+    </div>
+    <div class="detalhes mt-4">
+      <h4>Detalhes de <?php echo $arrayMes[intval($mes)-1]; ?></h4> 
     </div>
   </div>
 </body>
