@@ -84,7 +84,7 @@
   <a href="../entrada" class="tablink" >Entrada</a>
 
   <div class="container mb-3">
-    <div class="saldo row justify-content-between align-items-center">
+    <div class="saldo row justify-content-around align-items-center">
       <div class="col-4">
         <?php 
           if(isset($saldo_atual)){
@@ -98,7 +98,7 @@
           }
           else{
         ?>
-            <h5 class="positivo"><?php echo number_format($saldo_atual, 2,',','');?></h5>
+            <h5 class="atual"><?php echo number_format($saldo_atual, 2,',','');?></h5>
         <?php   
             }
           }
@@ -209,9 +209,68 @@
       </div>
     </div>
     <div class="detalhes mt-4">
-      <h4>Detalhes de <?php echo $arrayMes[intval($mes)-1]; ?></h4>
-       
+      <h4 class="text-center">Detalhes de <?php echo $arrayMes[intval($mes)-1]; ?></h4>
+
+      <ul class="nav nav-tabs nav-fill mt-3" id="pillsNave" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="nav-tabs-01" data-toggle="tab" role="tab" href="#nav-01">Despesas Fixas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-tabs-02" data-toggle="tab" role="tab" href="#nav-02">Despesas Variáveis</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-tabs-03" data-toggle="tab" role="tab" href="#nav-03">Entradas</a>
+        </li>
+      </ul>
+     
+      <div class="tab-content" id="nav-tabContent">
+        <!-- DESPESAS FIXAS -->
+        <div class="tab-pane fade show active" id="nav-01" role="tabpanel">
+          <div class="row">
+            <div class="col-sm-12 p-4">
+              <table class="table table-dark table-bordered mt-3">
+                <thead class="thead-dark">
+                  <tr class="header">
+                    <th style="width:10%;">Data</th>
+                    <th style="width:20%;">Nome</th>
+                    <th style="width:30%;">Anotação</th>
+                    <th style="width:30%;">Descrição</th>
+                    <th style="width:10%;">Valor</th>
+                  </tr>
+                </thead>
+                <tr>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- DESPESAS VARIÁVEIS -->
+        <div class="tab-pane fade show" id="nav-02" role="tabpanel">
+          <div class="row">
+            <div class="col-sm-12 p-4">
+              <table class="table table-dark table-bordered mt-3">
+                <thead class="thead-dark">
+                  <tr class="header">
+                    <th style="width:10%;">DETET</th>
+                    <th style="width:20%;">Nome</th>
+                    <th style="width:30%;">Anotação</th>
+                    <th style="width:30%;">Descrição</th>
+                    <th style="width:10%;">Valor</th>
+                  </tr>
+                </thead>
+                <tr>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      
+      </div>
     </div>
+    
   </div>
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
+  <script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
 </body>
 </html>
