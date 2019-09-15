@@ -43,6 +43,7 @@ div.conteudo form{
     background-color: rgba(32, 178, 170,.9);
     width: 400px;
     flex-direction: column;
+    animation: show .9s ease-in;
 }
 
 div.conteudo form  span{
@@ -86,6 +87,15 @@ ul.squares li{
     to{
         opacity: 0;
         transform: translateY(-800px) rotate(960deg);
+    }
+}
+
+@keyframes show {
+    from{
+        width: 250px;
+        
+    }
+    to{
     }
 }
 
