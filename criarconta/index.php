@@ -53,6 +53,8 @@
                 <a href="../"><button type="button" class="btn btn-dark mt-2 form-control font-weight-bold">Voltar</button></a>
             </form>
         </div>
+        <ul class="squares"></ul>
     </div>
+    <script src="../animatelogin.js"></script>
   </body>
 </html>
