@@ -1,5 +1,6 @@
 <?php 
   include_once('../php/init.php');
+  include_once('../php/datas.php');
   session_start();
 
   //TIMEZONE BRASIL
@@ -211,7 +212,7 @@
     <div class="detalhes mt-4">
       <h4 class="text-center">Detalhes de <?php echo $arrayMes[intval($mes)-1]; ?></h4>
 
-      <ul class="nav nav-tabs nav-fill mt-3" id="pillsNave" role="tablist">
+      <ul class="nav nav-tabs nav-fill mt-4" id="pillsNave" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="nav-tabs-01" data-toggle="tab" role="tab" href="#nav-01">Despesas Fixas</a>
         </li>
@@ -224,22 +225,54 @@
       </ul>
      
       <div class="tab-content" id="nav-tabContent">
+        <?php 
+          //CONSULTAR DESPESAS FIXAS
+          $consulta_fixas = mysqli_query($conn, "SELECT * FROM despesas_fixas  WHERE id_usuario = '$user'  AND MONTH(date_despesa) = MONTH('00-$mes-0000') ORDER BY date_despesa DESC");
+          //CONSULTAR DESPESAS VARIÁVEIS
+          $consulta_variaveis = mysqli_query($conn, "SELECT * FROM despesas_variaveis  WHERE id_usuario = '$user'  AND MONTH(date_despesa) = MONTH('00-$mes-0000') ORDER BY date_despesa DESC");
+          //CONSULTAR DESPESAS ENTRADAS
+          $consulta_entradas = mysqli_query($conn, "SELECT * FROM entradas  WHERE id_usuario = '$user'  AND MONTH(data_entrada) = MONTH('00-$mes-0000') ORDER BY data_entrada DESC");
+        ?>
         <!-- DESPESAS FIXAS -->
         <div class="tab-pane fade show active" id="nav-01" role="tabpanel">
           <div class="row">
-            <div class="col-sm-12 p-4">
-              <table class="table table-dark table-bordered mt-3">
+            <div class="col-sm-12 pl-4 pr-4">
+              <table class="table table-light table-bordered table-striped mt-4">
                 <thead class="thead-dark">
                   <tr class="header">
-                    <th style="width:10%;">Data</th>
+                    <th style="width:20%;">Data da Despesa</th>
                     <th style="width:20%;">Nome</th>
                     <th style="width:30%;">Anotação</th>
-                    <th style="width:30%;">Descrição</th>
+                    <th style="width:20%;">Descrição</th>
                     <th style="width:10%;">Valor</th>
                   </tr>
                 </thead>
-                <tr>
-                </tr>
+  
+                <tbody>
+                  <?php 
+                    while($linha = mysqli_fetch_assoc($consulta_fixas)){
+                      $n_fixas = 1;
+                  ?>
+                      <tr>
+                        <td><?php echo retornaDataFormatoBr($linha['date_despesa']);?></td>
+                        <td><?php echo utf8_encode($linha['nome']);?></td>
+                        <td><?php echo utf8_encode($linha['anotacao']);?></td>
+                        <td><?php echo utf8_encode($linha['descricao']);?></td>
+                        <td><?php echo number_format($linha['valor'],2,',','');?></td>
+                      </tr>
+                  <?php 
+                    }
+                  ?>
+                  <?php 
+                    //CONSULTA VAZIA
+                    if(!isset($n_fixas)){
+                  ?>
+                      <th style="color: #E22;" colspan='5'>Sem despesas fixas no mês de <?php echo $arrayMes[intval($mes)-1];?></th>
+                  <?php 
+                    }
+                  ?>
+
+                </tbody>
               </table>
             </div>
           </div>
@@ -247,19 +280,83 @@
         <!-- DESPESAS VARIÁVEIS -->
         <div class="tab-pane fade show" id="nav-02" role="tabpanel">
           <div class="row">
-            <div class="col-sm-12 p-4">
-              <table class="table table-dark table-bordered mt-3">
+            <div class="col-sm-12 pl-4 pr-4">
+              <table class="table table-light table-bordered table-striped mt-4">
                 <thead class="thead-dark">
                   <tr class="header">
-                    <th style="width:10%;">DETET</th>
+                    <th style="width:20%;">Data da Despesa</th>
                     <th style="width:20%;">Nome</th>
                     <th style="width:30%;">Anotação</th>
-                    <th style="width:30%;">Descrição</th>
+                    <th style="width:20%;">Descrição</th>
                     <th style="width:10%;">Valor</th>
                   </tr>
                 </thead>
-                <tr>
-                </tr>
+                
+                <tbody>
+                  <?php 
+                    while($linha = mysqli_fetch_assoc($consulta_variaveis)){
+                      $n_variaveis = 1;
+                  ?>
+                      <tr>
+                        <td><?php echo retornaDataFormatoBr($linha['date_despesa']);?></td>
+                        <td><?php echo utf8_encode($linha['nome']);?></td>
+                        <td><?php echo utf8_encode($linha['anotacao']);?></td>
+                        <td><?php echo utf8_encode($linha['descricao']);?></td>
+                        <td><?php echo number_format($linha['valor'],2,',','');?></td>
+                      </tr>
+                  <?php 
+                    }
+                  ?>
+                  <?php 
+                    //CONSULTA VAZIA
+                    if(!isset($n_variaveis)){
+                  ?>
+                      <th style="color: #E22;" colspan='5'>Sem despesas variáveis no mês de <?php echo $arrayMes[intval($mes)-1];?></th>
+                  <?php 
+                    }
+                  ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- ENTRADAS -->
+        <div class="tab-pane fade show" id="nav-03" role="tabpanel">
+          <div class="row">
+            <div class="col-sm-12 pl-4 pr-4">
+              <table class="table table-light table-bordered table-striped mt-4">
+                <thead class="thead-dark">
+                  <tr class="header">
+                    <th style="width:15%;">Data da Entrada</th>
+                    <th style="width:50%;">Descrição</th>
+                    <th style="width:20%;">Tipo de entrada</th>
+                    <th style="width:15%;">Valor</th>
+                  </tr>
+                </thead>
+              
+                <tbody>
+                  <?php 
+                    while($linha = mysqli_fetch_assoc($consulta_entradas)){
+                      $n_entradas = 1;
+                  ?>
+                      <tr>
+                        <td><?php echo retornaDataFormatoBr($linha['data_entrada']);?></td>
+                        <td><?php echo utf8_encode($linha['descricao']);?></td>
+                        <td><?php echo utf8_encode($linha['tipo']);?></td>
+                        <td><?php echo number_format($linha['valor'],2,',','');?></td>
+                      </tr>
+                  <?php 
+                    }
+                  ?>
+                  <?php 
+                    //CONSULTA VAZIA
+                    if(!isset($n_entradas)){
+                  ?>
+                      <th style="color: #E22;" colspan='5'>Sem entradas no mês de <?php echo $arrayMes[intval($mes)-1];?></th>
+                  <?php 
+                    }
+                  ?>
+                </tbody>
               </table>
             </div>
           </div>

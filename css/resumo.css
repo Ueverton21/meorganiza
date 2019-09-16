@@ -94,8 +94,10 @@ div.quadro h5 span.ganho{
 }
 
 div.detalhes{
-    padding: 20px 0;
+    padding: 20px 0 0 0;
     background-color: #999;
+    border-radius: 2px;
+    box-shadow: 0 0 5px #333; 
 }
 
 div.detalhes h4{
@@ -106,6 +108,12 @@ div.detalhes h4{
 }
 
 div.detalhes ul li a{
-    color: #000;
+    color: rgb(17, 17, 17);
     font-weight: bold;
+}
+
+div.detalhes ul li a.active{
+    color: #FFF !important;
+    background-color: #222 !important;
+    border: 0;
 }
