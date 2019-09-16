@@ -44,6 +44,10 @@
                 <a href="criarconta/"><button class="btn btn-dark mt-2 form-control font-weight-bold" type="button">Nova Conta</button></a>
             </form>
         </div>
+        <ul class="squares">
+            
+        </ul>
     </div>
+    <script src="animatelogin.js"></script>
   </body>
 </html>
