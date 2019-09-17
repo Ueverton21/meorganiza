@@ -125,7 +125,7 @@
                   </a>
               </td>
               <td class="text-center">
-                  <a style="color: #F22; font-size: 20px;" class="fa fa-trash " href="#">
+                  <a style="color: #F22; font-size: 20px;" class="fa fa-trash " href="../php/delete_despesa_fixa.php?id=<?php echo $linha['id']; ?>">
                   </a>
               </td>
           </tr>
