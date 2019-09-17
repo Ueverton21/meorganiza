@@ -57,7 +57,7 @@
         <label  ><i class="fa fa-bar-chart"></i> Me Organiza</label>
       </div>
       <div class="right">
-        <a href="#" ><i class="fa fa-cog"></i></a>
+        <a href="../perfil/" ><i class="fa fa-user"></i></a>
         <a href="../php/logout.php" ><i class="fa fa-close"></i></a>
       </div>
     </div>
@@ -102,7 +102,7 @@
                   </a>
               </td>
               <td class="text-center">
-                  <a style="color: #F22; font-size: 20px;" class="fa fa-trash " href="#">
+                  <a style="color: #F22; font-size: 20px;" class="fa fa-trash " href="../php/delete_entrada.php?id=<?php echo $linha['id']; ?>">
                   </a>
               </td>
           </tr>
